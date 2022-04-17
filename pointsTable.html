@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points Table</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="./teamData.json">
+</head>
+<body>
+    <div class="topbar">
+        <div class="logo">
+            <a href="index.html"><img class="logo" src="./PHOTOS/ipl-logo.png" alt=""></a>
+        </div>
+        <div class="headings">
+           <a class="listitems" href="./player.html">Player</a>
+           <a class="listitems" href="./pointsTable.html">Points Table</a>
+        </div>
+        <div class="socialicons">
+            <span style="color: #fff;"><i class="icons fa-brands fa-facebook"></i></span>
+            <span style="color: #fff;"><i class="icons fa-brands fa-instagram"></i></span>
+            <span style="color: #fff;"><i class="icons fa-brands fa-twitter"></i></span>
+        </div>
+    </div>
+    <table id="table">
+        <tr class="tableRow">
+            <th>Sno</th>
+            <th>Team</th>
+            <th>Pld</th>
+            <th>Won</th>
+            <th>Lost</th>
+            <th>Tied</th>
+            <th>NR</th>
+            <th>NetRR</th>
+            <th>For</th>
+            <th>Against</th>
+            <th>Pts</th>
+            <th>Form</th>
+            
+        </tr>
+
+
+    </table>
+    <script >
+        $(document).ready(function(){
+    $.getJSON("teamData.json", function(data){
+
+        var teamData = '';
+        $.each(data, function(key,value){
+            teamData += '<tr>';
+            teamData += '<td>'+value.Sno+'</td>';
+            teamData += '<td>'+value.Team+'</td>';
+            teamData += '<td>'+value.Pld+'</td>';
+            teamData += '<td>'+value.Won+'</td>';
+            teamData += '<td>'+value.Lost+'</td>';
+            teamData += '<td>'+value.Tied+'</td>';
+            teamData += '<td>'+value.NR+'</td>';
+            teamData += '<td>'+value.NetRR+'</td>';
+            teamData += '<td>'+value.For+'</td>';
+            teamData += '<td>'+value.Against+'</td>';
+            teamData += '<td>'+value.Pts+'</td>';
+            teamData += '<td>'+value.Form+'</td>';
+            // playerData += '<td>'+value.RunsScored+'</td>';
+            // playerData += '<td>'+value.HighestInnScore+'</td>';
+            // playerData += '<td>'+value.s100s+'</td>';
+            // playerData += '<td>'+value.s50s+'</td>';
+            // playerData += '<td>'+value.s4s+'</td>';
+            // playerData += '<td>'+value.s6s+'</td>';
+            // playerData += '<td>'+value.BattingAVG+'</td>';
+            teamData += '</tr>';
+        });
+        $('#table').append(teamData);
+    });
+});
+    </script>
+</body>
+</html>
